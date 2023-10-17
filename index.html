@@ -1,165 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <link rel="stylesheet" href="/jogo-hackathon/estilo.css" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Inter"
-        />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vite App</title>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                font-family: "Inter", sans-serif; /* 'Inter' é o nome da fonte importada */
-            }
-
-            .retangulo-principal {
-                width: 997px;
-                height: 690px;
-                background-color: #5f98ed;
-                position: relative;
-            }
-
-            .progress-container {
-                width: 95%;
-                height: 15px;
-                background-color: rgb(255, 255, 255);
-                position: absolute;
-                margin: 15px 10px 10px 23px;
-                border-radius: 15px;
-                top: 0;
-                overflow: hidden;
-            }
-
-            .progress-bar {
-                width: 250px;
-                height: 100%;
-                background-color: #6eee23;
-                position: relative;
-                animation: progress 3s linear infinite;
-                white-space: nowrap;
-            }
-
-            @keyframes progress {
-                0% {
-                    left: -100%;
-                }
-                100% {
-                    left: 100%;
-                }
-            }
-
-            .retangulo-respostas {
-                display: flex;
-                justify-content: center;
-                width: 664px;
-                height: 174px;
-                background-color: #ffffff;
-                position: absolute;
-                margin-left: 163px;
-                border-radius: 15px;
-                bottom: 20px;
-                display: flex;
-                justify-content: space-between; /* Para posicionar duas respostas do lado esquerdo e duas do lado direito */
-                padding: 10px; /* Para adicionar margem entre as respostas */
-            }
-
-            .resposta {
-                display: flex;
-                align-items: center;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                border-radius: 15px;
-                height: 48px;
-                padding: 10px;
-                font-size: 18px;
-                cursor: pointer;
-                margin: 5px;
-                width: 277px; /* Defina a largura desejada para cada resposta */
-            }
-
-            .resposta-esquerda {
-                justify-content: flex-start;
-            }
-
-            .resposta-direita {
-                justify-content: flex-end;
-            }
-
-            .bolinha {
-                background-color: #fff;
-                color: #007bff;
-                border-radius: 50%;
-                width: 30px;
-                height: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 10px;
-                font-weight: 700;
-            }
-
-            .texto-resposta {
-                flex: 1;
-                font-size: 14px;
-            }
-
-            .coluna {
-                display: flex;
-                width: 100%;
-                flex-direction: column;
-            }
-
-            #pontuacao {
-            }
-
-            #animal-image {
-            }
-
-            #numero-questao {
-            }
-        </style>
+        <title>Jogo da Matemática</title>
     </head>
     <body>
-        <div class="retangulo-principal">
-            <header>
-                <div class="progress-container">
-                    <div class="progress-bar"></div>
-                </div>
-            </header>
-            <div id="animal-image" style="width: 664px; height: 241px"></div>
-            <div id="pontuacao">Pontuação: 0/10</div>
-            <div id="numero-questao">Questão: 1/10</div>
-            <div class="retangulo-respostas">
-                <div class="coluna">
-                    <div class="resposta resposta-esquerda" data-answer="A">
-                        <span class="bolinha">A</span>
-                        <span class="texto-resposta">Resposta A</span>
-                    </div>
-                    <div class="resposta resposta-esquerda" data-answer="B">
-                        <span class="bolinha">B</span>
-                        <span class="texto-resposta">Resposta B</span>
-                    </div>
-                </div>
-                <div class="coluna">
-                    <div class="resposta resposta-direita" data-answer="C">
-                        <span class="bolinha">C</span>
-                        <span class="texto-resposta">Resposta C</span>
-                    </div>
-                    <div class="resposta resposta-direita" data-answer="D">
-                        <span class="bolinha">D</span>
-                        <span class="texto-resposta">Resposta D</span>
-                    </div>
-                </div>
+        <h2>QUIZ APP</h2>
+        <main>
+            <div class="content">
+                <span class="spnQtd"></span>
+                <span class="question"></span>
+                <div class="answers"></div>
             </div>
-            <script src="script.js"></script>
-        </div>
+            <div class="finish">
+                <span></span>
+                <button>Começar de novo</button>
+            </div>
+        </main>
+
+        <script src="script.js" type="module"></script>
     </body>
 </html>

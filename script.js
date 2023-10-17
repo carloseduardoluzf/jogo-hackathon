@@ -1,135 +1,65 @@
-const questions = [
-      {
-            imageSrc: "tubarao.jpg",
-            correctAnswer: "Tubarao",
-            answers: ["Macaco", "Cachorro", "Tubarao", "Gato"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "leao.jpg",
-            correctAnswer: "Leao",
-            answers: ["Leao", "Tucano", "Girafa", "Elefante"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "cachorro.jpg",
-            correctAnswer: "Cachorro",
-            answers: ["Tartaruga", "Cachorro", "Rinoceronte", "Cavalo"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "cavalo.jpg",
-            correctAnswer: "Cavalo",
-            answers: ["Macaco", "Cachorro", "Cavalo", "Cobra"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "cobra.jpg",
-            correctAnswer: "Cobra",
-            answers: ["Aranha", "Cobra", "Capivara", "Tigre"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "golfinho.jpg",
-            correctAnswer: "Golfinho",
-            answers: ["Golfinho", "Tamanduá", "Gato", "Ornitorrinco"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "girafa.jpg",
-            correctAnswer: "Girafa",
-            answers: ["Galinha", "Vaca", "Touro", "Girafa"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "macaco.jpg",
-            correctAnswer: "Macaco",
-            answers: ["Porco", "Capivara", "Macaco", "Javali"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "coelho.jpg",
-            correctAnswer: "Coelho",
-            answers: ["Macaco", "Coelho", "C", "D"] // Adicione as respostas possíveis
-      },
-      {
-            imageSrc: "capivara.jpg",
-            correctAnswer: "Capivara",
-            answers: ["Capivara", "Papagaio", "Panda", "Urso Pardo"] // Adicione as respostas possíveis
-      },
-];
+const question = document.querySelector(".question");
+const answers = document.querySelector(".answers");
+const spnQtd = document.querySelector(".spnQtd");
+const textFinish = document.querySelector(".finish span");
+const content = document.querySelector(".content");
+const contentFinish = document.querySelector(".finish");
+const btnRestart = document.querySelector(".finish button");
 
-let currentQuestionIndex = 0;
-let score = 0;
-let timer;
+import questions from "./questions.js";
 
-const animalImage = document.getElementById("animal-image");
-const scoreDisplay = document.getElementById("pontuacao");
-const questionNumberDisplay = document.getElementById("numero-questao");
-const answersContainer = document.getElementById("answers-container");
+let currentIndex = 0;
+let questionsCorrect = 0;
 
-function displayQuestion(question) {
-      animalImage.style.backgroundImage = `url(${question.imageSrc})`;
+btnRestart.onclick = () => {
+      content.style.display = "flex";
+      contentFinish.style.display = "none";
 
-      const shuffledAnswers = shuffleArray(question.answers);
+      currentIndex = 0;
+      questionsCorrect = 0;
+      loadQuestion();
+};
 
-      answersContainer.innerHTML = "";
-      shuffledAnswers.forEach((answer) => {
-            const option = document.createElement("div");
-            option.className = "resposta";
-            option.textContent = answer;
-            option.dataset.answer = answer;
-            answersContainer.appendChild(option);
+function nextQuestion(e) {
+      if (e.target.getAttribute("data-correct") === "true") {
+            questionsCorrect++;
+      }
+
+      if (currentIndex < questions.length - 1) {
+            currentIndex++;
+            loadQuestion();
+      } else {
+            finish();
+      }
+}
+
+function finish() {
+      textFinish.innerHTML = `você acertou ${questionsCorrect} de ${questions.length}`;
+      content.style.display = "none";
+      contentFinish.style.display = "flex";
+}
+
+function loadQuestion() {
+      spnQtd.innerHTML = `${currentIndex + 1}/${questions.length}`;
+      const item = questions[currentIndex];
+      answers.innerHTML = "";
+      question.innerHTML = item.question;
+
+      item.answers.forEach((answer) => {
+            const div = document.createElement("div");
+
+            div.innerHTML = `
+    <button class="answer" data-correct="${answer.correct}">
+      ${answer.option}
+    </button>
+    `;
+
+            answers.appendChild(div);
       });
 
-      startTimer();
+      document.querySelectorAll(".answer").forEach((item) => {
+            item.addEventListener("click", nextQuestion);
+      });
 }
 
-function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-}
-
-function startTimer() {
-      let timeLeft = 20;
-      timer = setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-                  clearInterval(timer);
-                  nextQuestion();
-            }
-      }, 1000);
-}
-
-function nextQuestion() {
-      clearInterval(timer);
-      if (currentQuestionIndex < questions.length - 1) {
-            currentQuestionIndex++;
-            displayQuestion(questions[currentQuestionIndex]);
-            updateQuestionNumberDisplay();
-      } else {
-            endGame();
-      }
-}
-
-function endGame() {
-      alert(`Jogo encerrado! Pontuação final: ${score}`);
-}
-
-function updateQuestionNumberDisplay() {
-      questionNumberDisplay.textContent = `Questão: ${currentQuestionIndex + 1}/10`;
-}
-
-answersContainer.addEventListener("click", (event) => {
-      const selectedAnswer = event.target.dataset.answer;
-      if (selectedAnswer) {
-            if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
-                  score++;
-            }
-            updateScoreDisplay();
-            nextQuestion();
-      }
-});
-
-function updateScoreDisplay() {
-      scoreDisplay.textContent = `Pontuação: ${score}/10`;
-}
-
-displayQuestion(questions[currentQuestionIndex]);
-updateScoreDisplay();
-updateQuestionNumberDisplay();
+loadQuestion();
