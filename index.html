@@ -3,6 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Inter"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vite App</title>
     </head>
@@ -15,20 +19,26 @@
             </header>
 
             <div class="retangulo-questoes">
-                <button class="questao">
-                    <span class="coluna">
-                        <span class="resposta">A</span>
-                        <span class="resposta-texto">Resposta A1</span>
-                        <span class="resposta">B</span>
-                        <span class="resposta-texto">Resposta A2</span>
-                    </span>
-                    <span class="coluna">
-                        <span class="resposta">C</span>
-                        <span class="resposta-texto">Resposta B1</span>
-                        <span class="resposta">D</span>
-                        <span class="resposta-texto">Resposta B2</span>
-                    </span>
-                </button>
+                <div class="coluna">
+                    <div class="resposta resposta-esquerda">
+                        <span class="bolinha">A</span>
+                        <span class="texto-resposta">Resposta A</span>
+                    </div>
+                    <div class="resposta resposta-esquerda">
+                        <span class="bolinha">B</span>
+                        <span class="texto-resposta">Resposta B</span>
+                    </div>
+                </div>
+                <div class="coluna">
+                    <div class="resposta resposta-direita">
+                        <span class="bolinha">C</span>
+                        <span class="texto-resposta">Resposta C</span>
+                    </div>
+                    <div class="resposta resposta-direita">
+                        <span class="bolinha">D</span>
+                        <span class="texto-resposta">Resposta D</span>
+                    </div>
+                </div>
             </div>
         </div>
         <script type="module" src="/main.js"></script>
