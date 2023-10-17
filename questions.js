@@ -65,7 +65,7 @@ export default [
             ],
       },
       {
-            question: "Quanto é 3 - 10 ?",
+            question: "Quanto é 10 - 3 ?",
             answers: [
                   { option: "7", correct: true },
                   { option: "6", correct: false },
@@ -73,7 +73,7 @@ export default [
             ],
       },
       {
-            question: "Quanto é 9 - 10 ?",
+            question: "Quanto é 10 - 9 ?",
             answers: [
                   { option: "1", correct: true },
                   { option: "19", correct: false },

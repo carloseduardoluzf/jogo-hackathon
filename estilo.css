@@ -8,6 +8,8 @@
 }
 
 body {
+    background-size: cover; /* Esta regra dimensiona a imagem para cobrir todo o elemento */
+    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
