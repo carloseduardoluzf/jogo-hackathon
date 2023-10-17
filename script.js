@@ -21,7 +21,11 @@ btnRestart.onclick = () => {
 };
 
 function nextQuestion(e) {
-      if (e.target.getAttribute("data-correct") === "true") {
+      const clickedButton = e.target;
+      const isCorrect = clickedButton.getAttribute("data-correct") === "true";
+
+      if (isCorrect) {
+            clickedButton.classList.add("correct-answer");
             questionsCorrect++;
       }
 

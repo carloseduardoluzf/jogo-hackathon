@@ -14,11 +14,7 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-    background: linear-gradient(
-        90deg,
-        rgba(91, 30, 159, 1) 0%,
-        rgba(77, 39, 182, 1) 100%
-    );
+    background-color: #5f98ed;
 }
 
 body h2 {
@@ -44,6 +40,10 @@ main {
     gap: 10px;
 }
 
+.correct-answer {
+    background-color: green;
+}
+
 .spnQtd {
     text-align: end;
 }
@@ -61,7 +61,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #008ccc;
+    background-color: #5f98ed;
     color: white;
 }
 
