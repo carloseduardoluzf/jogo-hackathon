@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.retangulo-principal {
+    width: 997px;
+    height: 690px;
+    background-color: #5f98ed;
+    position: relative;
+}
+
+.progress-container {
+    width: 95%;
+    height: 15px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    margin: 15px 10px 10px 23px;
+    border-radius: 15px;
+    top: 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 250px;
+    height: 100%;
+    background-color: #6eee23;
+    position: relative;
+    animation: progress 3s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes progress {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.retangulo-questoes {
+    display: flex;
+    justify-content: center;
+    width: 664px;
+    height: 174px;
+    background-color: #ffffff;
+    position: absolute;
+    margin-left: 163px;
+    border-radius: 15px;
+    bottom: 20px;
+}
+
+.questao {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.resposta {
+    background-color: #fff;
+    color: #007bff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.resposta-texto {
+    margin-bottom: 5px;
+}
